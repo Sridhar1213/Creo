@@ -28,7 +28,7 @@ class RPSCustomPainter extends CustomPainter{
   void paint(Canvas canvas, Size size) {
     
    Paint paint0 = Paint()
-      ..color = const Color.fromARGB(255, 33, 150, 243)
+      ..color = const Color(0xFF147EC1)
       ..style = PaintingStyle.fill
       ..strokeWidth = 1;
      

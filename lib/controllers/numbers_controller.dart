@@ -48,25 +48,25 @@ class NumbersController extends GetxController{
         var newNumber = Random().nextInt(randomMaxVal);
         var checkIfNumExists = numbersList.indexWhere((element) => element.number == newNumber);
         if(checkIfNumExists == -1){
-          numbersList.add(NumbersModel(number: newNumber, color: Colors.white));
+          numbersList.add(NumbersModel(number: newNumber, color: Color(0xFFF7F5FB)));
           newNumbersList.add(newNumber);
         }
       }
     }
     newNumbersList.shuffle();
-    for(var i = 0; i < 2; i++){
-      headerNumbers.add(NumbersModel(number: newNumbersList[i], color: Colors.white));
+    for(var i = 0; i < 3; i++){
+      headerNumbers.add(NumbersModel(number: newNumbersList[i], color: Color(0xFFF7F5FB)));
     }
     var newNum = Random().nextInt(randomMaxVal);
-    for(var i = 0; i < 100; i++){
-      var numInd = numbersList.indexWhere((element) => element.number == newNum);
-      if(numInd == -1){
-      headerNumbers.add(NumbersModel(number: Random().nextInt(randomMaxVal), color: Colors.white));
-      break;
-    }else{
-      newNum = Random().nextInt(randomMaxVal);
-    }
-    }
+    // for(var i = 0; i < 100; i++){
+    //   var numInd = numbersList.indexWhere((element) => element.number == newNum);
+    //   if(numInd == -1){
+    //   headerNumbers.add(NumbersModel(number: Random().nextInt(randomMaxVal), color: Colors.white));
+    //   break;
+    // }else{
+    //   newNum = Random().nextInt(randomMaxVal);
+    // }
+    // }
     // generateHeaderNumbers();
     generateRandomTiles(numbersList.length);
     update();
@@ -83,6 +83,22 @@ class NumbersController extends GetxController{
       if(indOfNumbers != -1){
         newNumbersList[indOfNumbers].color = Color(0xFF22F400);
         numbersList = newNumbersList;
+      }
+      var checkGameOver = newHeaderList.indexWhere((element) => element.color == Color(0xFFF7F5FB));
+      if(checkGameOver == -1){
+        showDialog(
+        barrierDismissible: false,
+          context: context,
+          builder: (context) => Alert("Play Again", Colors.black, "You have won!", (){
+            headerNumbers = [];
+            numbersList = [];
+            lifeList = [];
+            generateHeaderNumbers();
+            generateNumbers();
+            initialLifeList();
+            updateallowRandomPositions(true);
+            Navigator.pop(context);
+          },));
       }
     }else{
       var lifeInd = lifeList.indexWhere((element) => element.isAlive == false);
@@ -102,7 +118,7 @@ class NumbersController extends GetxController{
           showDialog(
         barrierDismissible: false,
           context: context,
-          builder: (context) => Alert("Lost the game", Colors.black, "You have lost! Boooooo Loser", (){
+          builder: (context) => Alert("Restart", Colors.black, "You have lost! Boooooo Loser", (){
             headerNumbers = [];
             numbersList = [];
             lifeList = [];

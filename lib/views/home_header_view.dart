@@ -49,7 +49,7 @@ class HomeHeader extends StatelessWidget {
                 itemCount: snapshot.lifeList.length,
                 itemBuilder: ((context, index) {
                 return Container(
-                  child: Center(child: snapshot.lifeList[index].isAlive == true ?  Icon(Icons.favorite, color: snapshot.lifeList[index].color,) : Icon(Icons.favorite_border_outlined, color: Colors.black,),),
+                  child: Center(child: snapshot.lifeList[index].isAlive == true ?  Icon(Icons.favorite, color: snapshot.lifeList[index].color,) : Icon(Icons.favorite_border_outlined, color: Colors.white,),),
                 );
                 }))),
                 GestureDetector(
