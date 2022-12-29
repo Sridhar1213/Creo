@@ -12,7 +12,7 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size=MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Color.fromRGBO(191, 234, 253, 1),
       body: SafeArea(
         child: Container(
           // height: 500,
@@ -27,10 +27,6 @@ class HomeView extends StatelessWidget {
             ),
             SizedBox(height: 30,),
             HomeNumbersView()
-            // for (int i = 0; i < 10; i++)
-            // Ball(
-            //   size: size!,
-            // )
           ],)
         ),
       ),

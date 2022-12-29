@@ -40,7 +40,7 @@ class _HomeNumbersViewState extends State<HomeNumbersView> {
             //                                     ],
             //                                     begin: Alignment.topCenter,
             //                                     end: Alignment.bottomCenter),),
-            color: Colors.white,
+            color: Color.fromRGBO(191, 234, 253, 1),
             child: StaggeredGridView.count(crossAxisCount: 5,
         //   itemCount: snapshot.numbersList.length,
         //   itemBuilder: (context, index) {
@@ -68,25 +68,33 @@ class _HomeNumbersViewState extends State<HomeNumbersView> {
         //   },
         //   staggeredTileBuilder: (ind) => generateRandomTiles(snapshot.data.documents.length),
               children: List.generate(snapshot.numbersList.length, (index) => Center(
-                child: GestureDetector(
-                  onTap: (){
-                    // var checkLifes = snapshot.lifeList.indexWhere((element) => element.isAlive == true);
-        //           if(checkLifes == -1){
-        //             showDialog(
-        // barrierDismissible: false,
-        //   context: context,
-        //   builder: (context) => Alert("Lost the game", Colors.black, "Game", (){}, (){}));
-        //           }else{
-                      
-                      numbersController.onSelectOfNumber(index, context);
-                    // }
-                  },
-                  child: Container(
-                    height: 30, width: 30,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30),
-                    color: snapshot.numbersList[index].color, border: Border.all(color: Color(0xFF0E4B8B))),
-                    child: Center(child: Text("${snapshot.numbersList[index].number}"))),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(40),
+                  child: Material(
+                    child: InkWell(
+                      highlightColor: Colors.grey.withOpacity(0.5),
+                      onTap: (){
+                      // var checkLifes = snapshot.lifeList.indexWhere((element) => element.isAlive == true);
+                          //           if(checkLifes == -1){
+                          //             showDialog(
+                          // barrierDismissible: false,
+                          //   context: context,
+                          //   builder: (context) => Alert("Lost the game", Colors.black, "Game", (){}, (){}));
+                          //           }else{
+                        
+                        numbersController.onSelectOfNumber(index, context);
+                      // }
+                    },
+                      splashColor: Colors.grey.withOpacity(0.3),
+                      child: Ink(
+                        height: 40, width: 40,
+                        // color: Colors.white,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(40),
+                        color: snapshot.numbersList[index].color, border: Border.all(color: Color(0xFF0E4B8B))),
+                        child: Center(child: Text("${snapshot.numbersList[index].number}"))),
+                    ),
+                  ),
                 ),
               )),
               staggeredTiles: snapshot.previousPositions

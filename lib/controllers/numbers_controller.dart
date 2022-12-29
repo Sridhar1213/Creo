@@ -13,7 +13,7 @@ class NumbersController extends GetxController{
   var headerCount = 3;
   var randomMaxVal = 100;
   var numbersList = <NumbersModel>[];
-  var numbersCount = 14;
+  var numbersCount = 15;
   var lifeList = <LifeModel>[];
   var lifeCount = 3;
   var isGameOver = false;
@@ -29,8 +29,12 @@ class NumbersController extends GetxController{
   }
 
   generateHeaderNumbers(){
-    // for(var i = 0; i < headerCount; i++){
-    headerNumbers.add(NumbersModel(number: Random().nextInt(randomMaxVal), color: Colors.white));
+    // for(var i = 0; i < 100; i++){
+    //   var newNum = Random().nextInt(randomMaxVal);
+    //   if(numbersList.any((element) => element.number != newNum)){
+    //   headerNumbers.add(NumbersModel(number: Random().nextInt(randomMaxVal), color: Colors.white));
+    //   break;
+    // }
     // }
     update();
   }
@@ -52,6 +56,16 @@ class NumbersController extends GetxController{
     newNumbersList.shuffle();
     for(var i = 0; i < 2; i++){
       headerNumbers.add(NumbersModel(number: newNumbersList[i], color: Colors.white));
+    }
+    var newNum = Random().nextInt(randomMaxVal);
+    for(var i = 0; i < 100; i++){
+      var numInd = numbersList.indexWhere((element) => element.number == newNum);
+      if(numInd == -1){
+      headerNumbers.add(NumbersModel(number: Random().nextInt(randomMaxVal), color: Colors.white));
+      break;
+    }else{
+      newNum = Random().nextInt(randomMaxVal);
+    }
     }
     // generateHeaderNumbers();
     generateRandomTiles(numbersList.length);

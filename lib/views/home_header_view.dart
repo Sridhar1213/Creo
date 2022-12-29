@@ -67,9 +67,6 @@ class HomeHeader extends StatelessWidget {
                     margin: EdgeInsets.only(right: 20),
                     width: 30, height: 30, decoration: BoxDecoration(color: Colors.red, borderRadius: BorderRadius.circular(24)), child: Icon(Icons.replay_outlined, color: Colors.white, size: 18,)),
                 )
-                // ElevatedButton(onPressed: (){
-                  
-                // }, child: Text("Restart"))
               ],
             ),
             SizedBox(height: 16,),

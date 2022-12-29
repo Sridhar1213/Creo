@@ -17,7 +17,7 @@ class Alert extends StatelessWidget {
         content: SizedBox(
           // width: 100,
           child: Container(
-            height: 60,
+            height: 70,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -31,21 +31,26 @@ class Alert extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    GestureDetector(
-                    child: Container(
-                      height: 25,
-                          width: 70,
-                          //color: Colors.red,
-                          decoration: BoxDecoration(color: Colors.red, border: Border.all(color: Colors.red),
-                      borderRadius: BorderRadius.all(Radius.circular(
-                              20) //                 <--- border radius here
-                          ),),
-                      child: Center(
-                        child: Text("Restart",
-                            style: TextStyle(color: Colors.white)),
-                      ),
+                    Container(
+                      height: 30,
+                      width: 100,
+                      child: ElevatedButton(onPressed: onPressOfRestart, child: Text("Restart"), style: ElevatedButton.styleFrom(foregroundColor: Colors.white, backgroundColor: Colors.red),),
                     ),
-                    onTap: onPressOfRestart),
+                    // GestureDetector(
+                    // child: Container(
+                    //   height: 25,
+                    //       width: 70,
+                    //       //color: Colors.red,
+                    //       decoration: BoxDecoration(color: Colors.red, border: Border.all(color: Colors.red),
+                    //   borderRadius: BorderRadius.all(Radius.circular(
+                    //           20) //                 <--- border radius here
+                    //       ),),
+                    //   child: Center(
+                    //     child: Text("Restart",
+                    //         style: TextStyle(color: Colors.white)),
+                    //   ),
+                    // ),
+                    // onTap: onPressOfRestart),
                   ],
                 )
               ],
